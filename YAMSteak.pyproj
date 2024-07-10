@@ -23,10 +23,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CONFIGURATION\config.py" />
+    <Compile Include="CONFIGURATION\create_gui.py" />
+    <Compile Include="CONFIGURATION\safe_assignment.py" />
     <Compile Include="CONFIGURATION\__init__.py" />
     <Compile Include="YAMLTYPES\checkbox.py" />
     <Compile Include="YAMLTYPES\dropdown.py" />
     <Compile Include="YAMLTYPES\entrybox.py" />
+    <Compile Include="YAMLTYPES\subsection.py" />
     <Compile Include="YAMLTYPES\tabs.py" />
     <Compile Include="YAMLTYPES\type_container.py" />
     <Compile Include="YAMLTYPES\__init__.py" />

@@ -5,10 +5,11 @@ from configuration.config import config
 
 
 window = CTk()
-window.geometry("500x400")
+window.geometry("500x500")
 cnf = config(window)
 container = type_container.container()
 
 container.handle()
 
 window.mainloop()
+

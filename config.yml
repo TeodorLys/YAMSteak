@@ -15,24 +15,82 @@ predefinitions:
     type: entry
   summarize:
     type: checkbox
-  agent-group: 
-  - name: "second-line" # Required
-    article: "4022" # Optional
-    text-entry: "Escalated to second line" # Optional
-  - name: "first-line"
-    article: "4021"
-  - name: "back office"
-    article: "4023"
-    text-entry: "Handled by back office"
-    exclude: True # Optional, default is false
+  agent-group:
+    type: subsection
+    block:
+        name: 
+          type: entry
+        article:
+          type: entry
+        text-entry:
+          type: entry
+        exclude: 
+          type: checkbox
   agent:
-  - name: "teodor lysvret van ginhoven" # Required
-    article: "1337" # Optional
-    text-entry: "Obviously a super difficult issue" # Optional
-  - name: "jesper holmgren"
-    exclude: true # Optional, default is false
+    type: subsection
+    block:
+        name: 
+          type: entry
+        article: 
+          type: entry
+        text-entry: 
+          type: entry
   priority:
-  - name: "urgent" # Required
-    article: "4024" # Required
-    text-entry: "Really hard ticket..." # Optional
-    add-article: false # Optional, default is true
+    type: subsection
+    block:
+      name: 
+        type: entry
+      article:
+        type: entry
+      text-entry:
+        type: entry
+      add-article:
+        type: checkbox
+
+test:
+  article:
+    type: entry
+  status: # Required
+    type: dropdown
+    options:
+        - "closed" 
+        - "resolved"
+  invoiced-status:
+    type: entry
+  freshservice-domain:
+    type: entry
+  freshservice-apikey:
+    type: entry
+  summarize:
+    type: checkbox
+  agent-group:
+    type: subsection
+    block:
+        name: 
+          type: entry
+        article:
+          type: entry
+        text-entry:
+          type: entry
+        exclude: 
+          type: checkbox
+  agent:
+    type: subsection
+    block:
+        name: 
+          type: entry
+        article: 
+          type: entry
+        text-entry: 
+          type: entry
+  priority:
+    type: subsection
+    block:
+      name: 
+        type: entry
+      article:
+        type: entry
+      text-entry:
+        type: entry
+      add-article:
+        type: checkbox

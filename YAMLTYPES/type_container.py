@@ -1,6 +1,5 @@
 
 #Global GUI Items
-
 objs: list = []
 
 class container:
