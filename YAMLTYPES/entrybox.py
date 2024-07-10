@@ -1,5 +1,6 @@
 from customtkinter import CTkEntry, CTk, BooleanVar
 from YAMLTYPES.type_container import objs
+from tkinter import LEFT
 
 class entrybox:
     def __init__(self, window: CTk, placeholder_text: str):
@@ -12,4 +13,4 @@ class entrybox:
     def begin(self):
         self.obj = CTkEntry(self.window, 
                                placeholder_text=self.placeholder)
-        self.obj.pack()
+        self.obj.pack(padx=1,pady=10, anchor="w")

@@ -23,9 +23,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CONFIGURATION\config.py" />
+    <Compile Include="CONFIGURATION\__init__.py" />
     <Compile Include="YAMLTYPES\checkbox.py" />
     <Compile Include="YAMLTYPES\dropdown.py" />
     <Compile Include="YAMLTYPES\entrybox.py" />
+    <Compile Include="YAMLTYPES\tabs.py" />
     <Compile Include="YAMLTYPES\type_container.py" />
     <Compile Include="YAMLTYPES\__init__.py" />
     <Compile Include="YAMSteak.py" />
@@ -44,6 +46,9 @@
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
     </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.yml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
