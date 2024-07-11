@@ -31,9 +31,12 @@ GUI:
         type: checkbox
       
 ```
-<p align="left">
-<img src="doc/example.png" align="left" width="800" height="400"/> 
+
+
+<p align="center">
+<img src="doc/example.png" align="center" width="800" height="400"/> 
 </p>
+
 
 ##### Output
 ``` YAML
