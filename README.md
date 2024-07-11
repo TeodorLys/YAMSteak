@@ -31,6 +31,5 @@ GUI:
       
 ```
 <p align="left">
-<img src="doc/example1.png" align="left" width="400" height="400"/> 
-<img src="doc/example2.png" align="right" width="400" height="400"/> 
+<img src="doc/example.png" align="left" width="800" height="400"/> 
 </p>
