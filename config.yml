@@ -1,96 +1,20 @@
-predefinitions:
-# DEFAULT VALUES
-  article:
+GUI:
+  height:
     type: entry
-  status: # Required
+  width:
+    type: entry
+  border:
     type: dropdown
     options:
-        - "closed" 
-        - "resolved"
-  invoiced-status:
-    type: entry
-  freshservice-domain:
-    type: entry
-  freshservice-apikey:
-    type: entry
-  summarize:
-    type: checkbox
-  agent-group:
+      - rounded
+      - transparent
+      - none
+  buttons:
     type: subsection
     block:
-        name: 
-          type: entry
-        article:
-          type: entry
-        text-entry:
-          type: entry
-        exclude: 
-          type: checkbox
-  agent:
-    type: subsection
-    block:
-        name: 
-          type: entry
-        article: 
-          type: entry
-        text-entry: 
-          type: entry
-  priority:
-    type: subsection
-    block:
-      name: 
+      height:
         type: entry
-      article:
+      width:
         type: entry
-      text-entry:
-        type: entry
-      add-article:
-        type: checkbox
-
-test:
-  article:
-    type: entry
-  status: # Required
-    type: dropdown
-    options:
-        - "closed" 
-        - "resolved"
-  invoiced-status:
-    type: entry
-  freshservice-domain:
-    type: entry
-  freshservice-apikey:
-    type: entry
-  summarize:
-    type: checkbox
-  agent-group:
-    type: subsection
-    block:
-        name: 
-          type: entry
-        article:
-          type: entry
-        text-entry:
-          type: entry
-        exclude: 
-          type: checkbox
-  agent:
-    type: subsection
-    block:
-        name: 
-          type: entry
-        article: 
-          type: entry
-        text-entry: 
-          type: entry
-  priority:
-    type: subsection
-    block:
-      name: 
-        type: entry
-      article:
-        type: entry
-      text-entry:
-        type: entry
-      add-article:
+      clickable:
         type: checkbox
