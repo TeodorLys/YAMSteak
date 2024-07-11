@@ -1,6 +1,5 @@
 from customtkinter import CTkCheckBox, CTk, BooleanVar
 from YAMLTYPES.type_container import objs
-from tkinter import LEFT
 
 class checkbox:
     def __init__(self, window: CTk, text: str, disable_container: bool = False):

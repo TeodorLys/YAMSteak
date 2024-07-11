@@ -1,4 +1,3 @@
-from tkinter import LEFT
 from customtkinter import CTkComboBox, CTk, StringVar
 from YAMLTYPES.type_container import objs
 

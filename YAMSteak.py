@@ -1,5 +1,5 @@
-from YAMLTYPES import dropdown, checkbox, type_container, entrybox, tabs
-from customtkinter import *
+from YAMLTYPES import type_container
+from customtkinter import CTk, CTkButton
 from configuration.config import config
 
 
@@ -10,6 +10,14 @@ cnf = config(window)
 container = type_container.container()
 
 container.handle()
+
+def command():
+    cnf.generate_yaml()
+
+
+generate_btn = CTkButton(window, text="Generate", command=command)
+generate_btn.pack()
+
 
 window.mainloop()
 

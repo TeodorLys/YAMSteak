@@ -1,6 +1,5 @@
-from customtkinter import CTkButton, CTkLabel, CTkScrollableFrame, CTk, BooleanVar, CTkToplevel
-from YAMLTYPES.type_container import objs
-from configuration.create_gui import create_gui
+from customtkinter import CTkButton, CTkLabel, CTkScrollableFrame, CTk, CTkToplevel
+from GUI.create_gui import create_gui, gui_objects
 
 class subsection:
     def __init__(self, window: CTk, name: str):
@@ -10,6 +9,10 @@ class subsection:
         self.button = None
         self.block = None
         self.label = None
+        self.toplevel = None
+        self.gui = None
+        self.data = []
+        self.gui_obj = None
 
     def create(self, block: dict):
         self.block = block
@@ -26,15 +29,20 @@ class subsection:
     def __command(self):
         self.toplevel = CTkToplevel(self.window)
         self.gui = create_gui()
-        self.gui.handle_dict_objects(self.toplevel, self.block, True)
-        self.gui.begin();
+        self.gui_obj = self.gui.handle_dict_objects(self.toplevel, self.block, True)
+        self.gui_obj.begin()
         self.button = CTkButton(self.toplevel, text="Create", command=self.__on_create)
         self.button.pack()
         self.toplevel.grab_set()
         
+    def get(self):
+        return {self.name:self.data}
+
     def __on_create(self):
         self.toplevel.grab_release()
-        for i in self.gui.get_data_block().items():
+        last_dict = self.gui_obj.get_data_block()
+        self.data.append(last_dict)
+        for i in last_dict.items():
             l = CTkLabel(self.obj, text=i[0] + " -- " + str(i[1]))
             l.pack()
         l = CTkLabel(self.obj, text="------------------------------------------")

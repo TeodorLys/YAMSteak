@@ -1,0 +1,31 @@
+predefinitions:
+  agent:
+  - article: '4578'
+    name: teodor
+    text-entry: Awesome
+  agent-group:
+  - article: '422'
+    exclude: false
+    name: support-it
+    text-entry: Testdude
+  article: '4021'
+  freshservice-apikey: '123456789'
+  freshservice-domain: dialect.dialect.dialect
+  invoiced-status: Closed
+  priority:
+  - add-article: true
+    article: test
+    name: urgent
+    text-entry: test
+  status: closed
+  summarize: false
+test:
+  agent: []
+  agent-group: []
+  article: ''
+  freshservice-apikey: ''
+  freshservice-domain: ''
+  invoiced-status: ''
+  priority: []
+  status: closed
+  summarize: false
