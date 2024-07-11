@@ -30,3 +30,7 @@ GUI:
          type: checkbox
       
 ```
+<p align="left">
+<img src="doc/example1.png" align="left" width="480" height="480"/> 
+<img src="doc/example2.png" align="right" width="480" height="480"/> 
+</p>
