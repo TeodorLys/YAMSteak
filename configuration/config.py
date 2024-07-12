@@ -1,9 +1,19 @@
+"""
+Handles the loading and deletegaing of the config file
+Also generates the final output yaml file
+"""
+
 import yaml
-from YAMLTYPES import subsection, tabs
-from GUI.create_gui import create_gui, gui_objects
+from YAMLTYPES import tabs
+from GUI.create_gui import create_gui
 from customtkinter import CTk
 
 class config:
+    """
+    Loads the yaml config file
+    gives the data to the create_gui class
+    generates the output
+    """
     def __init__(self, window: CTk):
         with open("config.yml", 'r') as file:
             self.config = yaml.safe_load(file)
@@ -13,6 +23,12 @@ class config:
         self.__generate_gui()
         
     def generate_yaml(self):
+        """
+        Retrieves all gui_obj data with top name
+        and adds it to a single dict object,
+        then dumps it top a data.yml file
+        TODO: another name of output
+        """
         final = {}
         for g in self.gui_obj:
             final.update(g.get_data_block_with_top_name())

@@ -1,8 +1,37 @@
+"""
+YAML type-keyword: subsection
+
+Creates a new tab in the subtabs and creates a button that you can
+add the items.
+
+This is for when you need a list of dicts. example:
+buttons:
+  type: subsection
+  block:
+    height:
+    type: entry
+    width:
+    type: entry
+    clickable:
+    type: checkbox
+    
+TODO: Add a remove button to remove a entry
+MAYBE: add the items as entries instead of labels so they can be changed
+after creation
+"""
 from CTkToolTip import CTkToolTip
 from customtkinter import CTkButton, CTkLabel, CTkScrollableFrame, CTk, CTkToplevel
 from GUI.create_gui import create_gui, gui_objects
 
 class subsection:
+    """
+    * name: name/key of the element ex. YAML: "
+    -                                            height: 
+    -                                                type: entry
+    -                                         "
+    - name = height   
+    * description: tooltip text, if unassigned, tooltip is disabled
+    """
     def __init__(self, window: CTk, name: str, description: str = ""):
         self.window = window
         self.obj = None
@@ -18,6 +47,10 @@ class subsection:
         self.tooltip = None
 
     def create(self, block: dict):
+        """
+        Creates a scrollable frame, ´Add´ button, 
+        Label with name and saves the block items
+        """
         self.block = block
         self.obj = CTkScrollableFrame(self.window,width=350, height=1,
                                       orientation="vertical",fg_color="#3d3d3d")
@@ -32,6 +65,10 @@ class subsection:
         return self.obj
     
     def __command(self):
+        """
+        Opens a new window with the defined element from the block
+        gotten from the ´create´ function
+        """
         self.toplevel = CTkToplevel(self.window)
         self.gui = create_gui()
         self.gui_obj = self.gui.handle_dict_objects(self.toplevel, self.block, True)
@@ -41,9 +78,17 @@ class subsection:
         self.toplevel.grab_set()
         
     def get(self):
+        """
+        Returns the object as a dict with its corresponding name/key
+        """
         return {self.name:self.data}
 
     def __on_create(self):
+        """
+        When pressing create, add the items as a labels to
+        the main scrollable frame.
+        Then destroy the window
+        """
         self.toplevel.grab_release()
         last_dict = self.gui_obj.get_data_block()
         self.data.append(last_dict)

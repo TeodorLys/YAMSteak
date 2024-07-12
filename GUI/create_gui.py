@@ -1,8 +1,15 @@
+"""
+Handles the creation of each GUI type (YAMLTYPES)
+"""
+
 from dataclasses import dataclass
 from YAMLTYPES import dropdown, multi_dropdown, multi_entrybox, subsection, tabs,entrybox, checkbox
 from CTkToolTip import CTkToolTip
 
 class gui_objects:
+    """
+    Contains lists of all objects that is created
+    """
     def __init__(self):
         self.name = ""
         self.entry = []
@@ -13,6 +20,9 @@ class gui_objects:
         self.subsection = []
     
     def begin(self):
+        """
+        Calls begin on all objects that exists in the lists
+        """
         for e in self.entry:
             e.begin()
         for c in self.checkbox:
@@ -25,6 +35,10 @@ class gui_objects:
             s.begin()
 
     def get_data_block(self) -> dict:
+        """
+        Compiles the data entered in the objects 
+        into a single dict object
+        """
         final = {}
         for e in self.entry:
             final.update(e.get())
@@ -39,16 +53,41 @@ class gui_objects:
         return final
     
     def get_data_block_with_top_name(self) -> dict:
+        """
+        Compiles the data entered in the objects 
+        into a single dict object with the top name. example
+        buttons:
+          type: subsection
+          block:
+            height:
+            type: entry
+            width:
+            type: entry
+            clickable:
+            type: checkbox
+
+        top_name = buttons
+        """
         d = self.get_data_block()
         return {self.name:d}
 
 
 class create_gui:
+    """
+    Handles the types entered in the config.yml file.
+    """
     def __init__(self):
         self.custom_begin = False
         self.tab = None
     
     def handle_dict_objects(self, tab, data, custom_begin: bool = False):
+        """
+        Delegates function calls from the config data
+        * tab: the frame we will add the gui elements
+        * data: the data to handle (dict)
+        * custom_begin: if the elements should register them selfs in the
+        - type_container or be ´begun´ manually
+        """
         self.custom_begin = custom_begin
         gui_obj = gui_objects()
         last_description = ""

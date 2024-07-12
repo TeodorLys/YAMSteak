@@ -1,8 +1,21 @@
+"""
+YAML type-keyword: multi_entry
+"""
 from CTkToolTip import CTkToolTip
 from customtkinter import CTkButton, CTkEntry, CTk, CTkFrame, StringVar
 from YAMLTYPES.type_container import objs
 
 class multi_entrybox:
+    """
+    * placeholder_text: when no text is entered, this is displayed
+    * name: name/key of the element ex. YAML: "
+    -                                            height: 
+    -                                                type: entry
+    -                                         "
+    - name = height
+    * description: tooltip text, if unassigned, tooltip is disabled
+    * disable_container: if the ´begin´ funtion should be called through the type_container
+    """
     def __init__(self, window: CTk, placeholder_text: str, name:str, description: str = "", disable_container: bool = False):
         self.window = window
         self.placeholder = placeholder_text
@@ -16,6 +29,11 @@ class multi_entrybox:
             objs.append(self)
         
     def begin(self):
+        """
+        Creates the first entrybox and if a 
+        description is added we create the tooltip object
+        Also create the +/- buttons for adding/removing another dropdown
+        """
         self.obj.append(CTkEntry(self.window, 
                                placeholder_text=self.placeholder))
         self.btn_frame = CTkFrame(self.window)
@@ -29,6 +47,9 @@ class multi_entrybox:
         self.remove_btn.grid(column=1, row=0)
 
     def get(self):
+        """
+        Returns the object as a dict with its corresponding name/key
+        """
         final_list = []
         for c in self.obj:
             if c.get() != "":
@@ -36,6 +57,9 @@ class multi_entrybox:
         return {self.name:final_list}
 
     def __add_command(self):
+        """
+        Adds a entrybox element after the first entrybox created
+        """
         cb_var = StringVar(value=self.options[0])
         self.obj.append(CTkEntry(self.window, 
                                placeholder_text=self.placeholder))
@@ -44,6 +68,9 @@ class multi_entrybox:
         self.obj[len(self.obj) - 1].pack(after=self.obj[len(self.obj)-2],anchor="w")
 
     def __remove_command(self):
+        """
+        Remove the last created entrybox
+        """
         if len(self.obj) == 1:
             return
         self.obj[len(self.obj)-1].pack_forget()
