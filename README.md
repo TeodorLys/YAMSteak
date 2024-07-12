@@ -5,7 +5,11 @@
 
 # YAMSteak
 This software is for generating YAML configuration file through a GUI.
-You create a config.yml file and define which fields are needed and define what type of gui element it should be
+You create a config.yml file and define which fields are needed and define what type of gui element it should be. 
+
+Super janky, thrown together in about 3 days but it works! 
+Quick fix FTW
+
 ## Example
 ##### Config.yml
 ``` YAML
