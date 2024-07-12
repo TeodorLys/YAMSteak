@@ -14,7 +14,7 @@ class multi_dropdown:
     -                                         "
     - name = height   
     * description: tooltip text, if unassigned, tooltip is disabled
-    * disable_container: if the ´begin´ funtion should be called through the type_container
+    * disable_container: if the 'begin' funtion should be called through the type_container
     """
     def __init__(self, window: CTk, options: list, name:str, description: str = "", disable_container: bool = False):
         if len(options) == 0:

@@ -14,7 +14,7 @@ class multi_entrybox:
     -                                         "
     - name = height
     * description: tooltip text, if unassigned, tooltip is disabled
-    * disable_container: if the ´begin´ funtion should be called through the type_container
+    * disable_container: if the 'begin' funtion should be called through the type_container
     """
     def __init__(self, window: CTk, placeholder_text: str, name:str, description: str = "", disable_container: bool = False):
         self.window = window
@@ -60,7 +60,6 @@ class multi_entrybox:
         """
         Adds a entrybox element after the first entrybox created
         """
-        cb_var = StringVar(value=self.options[0])
         self.obj.append(CTkEntry(self.window, 
                                placeholder_text=self.placeholder))
         if self.desc != "":

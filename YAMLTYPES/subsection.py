@@ -21,7 +21,7 @@ after creation
 """
 from CTkToolTip import CTkToolTip
 from customtkinter import CTkButton, CTkLabel, CTkScrollableFrame, CTk, CTkToplevel
-from GUI.create_gui import create_gui, gui_objects
+from GUI.create_gui import gui_objects
 
 class subsection:
     """
@@ -48,7 +48,7 @@ class subsection:
 
     def create(self, block: dict):
         """
-        Creates a scrollable frame, ´Add´ button, 
+        Creates a scrollable frame, 'Add' button, 
         Label with name and saves the block items
         """
         self.block = block
@@ -67,7 +67,7 @@ class subsection:
     def __command(self):
         """
         Opens a new window with the defined element from the block
-        gotten from the ´create´ function
+        gotten from the 'create' function
         """
         self.toplevel = CTkToplevel(self.window)
         self.gui = create_gui()

@@ -9,7 +9,7 @@ class checkbox:
     """
     * text: what text should be after the checkbox
     * description: tooltip text, if unassigned, tooltip is disabled
-    * disable_container: if the ´begin´ funtion should be called through the type_container
+    * disable_container: if the 'begin' funtion should be called through the type_container
     """
     def __init__(self, window: CTk, text: str, description: str = "", disable_container: bool = False):
         self.window = window

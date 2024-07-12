@@ -1,9 +1,7 @@
 """
 Handles the creation of each GUI type (YAMLTYPES)
 """
-
-from dataclasses import dataclass
-from YAMLTYPES import dropdown, multi_dropdown, multi_entrybox, subsection, tabs,entrybox, checkbox
+from YAMLTYPES import dropdown, multi_dropdown, multi_entrybox, tabs,entrybox, checkbox
 from CTkToolTip import CTkToolTip
 
 class gui_objects:
@@ -86,7 +84,7 @@ class create_gui:
         * tab: the frame we will add the gui elements
         * data: the data to handle (dict)
         * custom_begin: if the elements should register them selfs in the
-        - type_container or be ´begun´ manually
+        - type_container or be 'begun' manually
         """
         self.custom_begin = custom_begin
         gui_obj = gui_objects()
@@ -134,6 +132,7 @@ class create_gui:
         
     def __handle_subsection(self, tab, name, data, description):
         frame = self.tab.add(name, True)
+        from YAMLTYPES import subsection
         sec = subsection.subsection(frame, name, description)
         sec.create(data)
         return sec

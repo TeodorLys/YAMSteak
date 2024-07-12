@@ -7,7 +7,7 @@ from YAMLTYPES.type_container import objs
 
 class tabs:
     """
-    * disable_container: if the ´begin´ funtion should be called through the type_container
+    * disable_container: if the 'begin' funtion should be called through the type_container
     """
     def __init__(self, window: CTk, disable_container: bool = False):
         self.window = window
