@@ -12,6 +12,7 @@ You create a config.yml file and define which fields are needed and define what 
 GUI:
   height:
     type: entry
+    description: "The height of the main window" # Generates a tooltip when hovering over the height entrybox
   width:
     type: entry
   border:
