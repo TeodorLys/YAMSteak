@@ -31,6 +31,7 @@
     <Compile Include="YAMLTYPES\dropdown.py" />
     <Compile Include="YAMLTYPES\entrybox.py" />
     <Compile Include="YAMLTYPES\multi_dropdown.py" />
+    <Compile Include="YAMLTYPES\multi_entrybox.py" />
     <Compile Include="YAMLTYPES\subsection.py" />
     <Compile Include="YAMLTYPES\tabs.py" />
     <Compile Include="YAMLTYPES\type_container.py" />

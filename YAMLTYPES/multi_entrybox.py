@@ -1,16 +1,12 @@
 from CTkToolTip import CTkToolTip
-from customtkinter import CTkButton, CTkComboBox, CTk, CTkFrame, StringVar
+from customtkinter import CTkButton, CTkEntry, CTk, CTkFrame, StringVar
 from YAMLTYPES.type_container import objs
 
-class multi_dropdown:
-    def __init__(self, window: CTk, options: list, name:str, description: str = "", disable_container: bool = False):
-        if len(options) == 0:
-            print("No options added")
-            return
+class multi_entrybox:
+    def __init__(self, window: CTk, placeholder_text: str, name:str, description: str = "", disable_container: bool = False):
         self.window = window
-        self.options = options
+        self.placeholder = placeholder_text
         self.name = name
-        self.combo_var = []
         self.obj = []
         self.add_btn = None
         self.remove_btn = None
@@ -20,11 +16,8 @@ class multi_dropdown:
             objs.append(self)
         
     def begin(self):
-        cb_var = StringVar(value=self.options[0])
-        self.combo_var.append(cb_var)
-        self.obj.append(CTkComboBox(self.window, 
-                               values=self.options, 
-                               variable=self.combo_var))
+        self.obj.append(CTkEntry(self.window, 
+                               placeholder_text=self.placeholder))
         self.btn_frame = CTkFrame(self.window)
         self.add_btn = CTkButton(self.btn_frame, text="+", width=20, height=20, command=self.__add_command)
         self.remove_btn = CTkButton(self.btn_frame, text="-", width=20, height=20, command=self.__remove_command)
@@ -37,17 +30,15 @@ class multi_dropdown:
 
     def get(self):
         final_list = []
-        for c in self.combo_var:
+        for c in self.obj:
             if c.get() != "":
                 final_list.append(c.get())
         return {self.name:final_list}
 
     def __add_command(self):
         cb_var = StringVar(value=self.options[0])
-        self.combo_var.append(cb_var)
-        self.obj.append(CTkComboBox(self.window, 
-                               values=self.options, 
-                               variable=cb_var))
+        self.obj.append(CTkEntry(self.window, 
+                               placeholder_text=self.placeholder))
         if self.desc != "":
             self.tooltip.append(CTkToolTip(self.obj[len(self.obj) - 1], delay=0.5, message=self.desc))
         self.obj[len(self.obj) - 1].pack(after=self.obj[len(self.obj)-2],anchor="w")
@@ -59,4 +50,3 @@ class multi_dropdown:
         self.obj.pop()
         if self.desc != "":
             self.tooltip.pop()
-        

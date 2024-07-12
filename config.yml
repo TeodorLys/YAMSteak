@@ -2,21 +2,28 @@ predefinitions:
 # DEFAULT VALUES
   article:
     type: entry
+    description: "The default article if no other overwriting parameter exists"
   status: # Required
-    type: multi_dropdown
+    type: multi_entry
+    description: "Status tool tip test"
     options:
         - "closed" 
         - "resolved"
   invoiced-status:
     type: entry
+    description: "When the ticket is done and an invoice is sent to the customer, what status should the invoice be set to"
   freshservice-domain:
     type: entry
+    description: "domain example: dialect.freshdesk.com"
   freshservice-apikey:
     type: entry
+    description: "API Key to the freshdesk"
   summarize:
     type: checkbox
+    description: "If the ticket should be summarized"
   agent-group:
     type: subsection
+    description: "just a subsection"
     block:
         name: 
           type: entry

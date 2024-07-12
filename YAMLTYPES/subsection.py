@@ -1,8 +1,9 @@
+from CTkToolTip import CTkToolTip
 from customtkinter import CTkButton, CTkLabel, CTkScrollableFrame, CTk, CTkToplevel
 from GUI.create_gui import create_gui, gui_objects
 
 class subsection:
-    def __init__(self, window: CTk, name: str):
+    def __init__(self, window: CTk, name: str, description: str = ""):
         self.window = window
         self.obj = None
         self.name = name
@@ -13,6 +14,8 @@ class subsection:
         self.gui = None
         self.data = []
         self.gui_obj = None
+        self.desc = description
+        self.tooltip = None
 
     def create(self, block: dict):
         self.block = block
@@ -22,6 +25,8 @@ class subsection:
         self.obj.pack(padx=1,pady=1, anchor="w")
         self.label = CTkLabel(self.obj,text=self.name)
         self.button = CTkButton(self.obj, text="Add", command=self.__command)
+        if self.desc != "":
+            self.tooltip = CTkToolTip(self.button, delay=0.5, message=self.desc)
         self.label.pack()
         self.button.pack()
         return self.obj

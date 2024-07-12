@@ -1,8 +1,13 @@
-GUI:
-  border: transparent
-  buttons:
-  - clickable: true
-    height: '15'
-    width: '20'
-  height: '150'
-  width: '200'
+predefinitions:
+  agent: []
+  agent-group: []
+  article: ''
+  freshservice-apikey: ''
+  freshservice-domain: ''
+  invoiced-status: ''
+  priority: []
+  status:
+  - closed
+  - resolved
+  - resolved
+  summarize: false
