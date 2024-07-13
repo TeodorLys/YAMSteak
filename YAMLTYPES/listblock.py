@@ -1,12 +1,12 @@
 """
-YAML type-keyword: subsection
+YAML type-keyword: listblock
 
 Creates a new tab in the subtabs and creates a button that you can
 add the items.
 
 This is for when you need a list of dicts. example:
 buttons:
-  type: subsection
+  type: listblock
   block:
     height:
     type: entry
@@ -23,7 +23,7 @@ from CTkToolTip import CTkToolTip
 from customtkinter import CTkButton, CTkLabel, CTkScrollableFrame, CTk, CTkToplevel
 from GUI.create_gui import gui_objects
 
-class subsection:
+class listblock:
     """
     * name: name/key of the element ex. YAML: "
     -                                            height: 
@@ -70,6 +70,7 @@ class subsection:
         gotten from the 'create' function
         """
         self.toplevel = CTkToplevel(self.window)
+        from GUI.create_gui import create_gui
         self.gui = create_gui()
         self.gui_obj = self.gui.handle_dict_objects(self.toplevel, self.block, True)
         self.gui_obj.begin()

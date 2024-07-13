@@ -15,7 +15,7 @@ class gui_objects:
         self.checkbox = []
         self.dropdown = []
         self.multidropdown = []
-        self.subsection = []
+        self.listblock = []
     
     def begin(self):
         """
@@ -29,8 +29,8 @@ class gui_objects:
             d.begin()
         for m in self.multidropdown:
             m.begin()
-        for s in self.subsection:
-            s.begin()
+        for l in self.listblock:
+            l.begin()
 
     def get_data_block(self) -> dict:
         """
@@ -46,8 +46,8 @@ class gui_objects:
             final.update(d.get())
         for m in self.multidropdown:
             final.update(m.get())
-        for s in self.subsection:
-            final.update(s.get())
+        for l in self.listblock:
+            final.update(l.get())
         return final
     
     def get_data_block_with_top_name(self) -> dict:
@@ -55,7 +55,7 @@ class gui_objects:
         Compiles the data entered in the objects 
         into a single dict object with the top name. example
         buttons:
-          type: subsection
+          type: listblock
           block:
             height:
             type: entry
@@ -111,8 +111,8 @@ class create_gui:
                 gui_obj.dropdown.append(self.__handle_dropdown(frame, i[0], i[1]["options"], last_description))
             if i[1]["type"] == "multi_dropdown":
                 gui_obj.multidropdown.append(self.__handle_multi_dropdown(frame, i[0], i[1]["options"], last_description))
-            if i[1]["type"] == "subsection":
-                gui_obj.subsection.append(self.__handle_subsection(tab, i[0], i[1]["block"], last_description))
+            if i[1]["type"] == "listblock":
+                gui_obj.listblock.append(self.__handle_listblock(tab, i[0], i[1]["block"], last_description))
         return gui_obj
 
     def __handle_entry_objects(self, tab, name, description):
@@ -130,9 +130,9 @@ class create_gui:
     def __handle_multi_dropdown(self, tab, name, data, description):
         return multi_dropdown.multi_dropdown(tab, data, name, description, self.custom_begin)
         
-    def __handle_subsection(self, tab, name, data, description):
+    def __handle_listblock(self, tab, name, data, description):
         frame = self.tab.add(name, True)
-        from YAMLTYPES import subsection
-        sec = subsection.subsection(frame, name, description)
+        from YAMLTYPES import listblock
+        sec = listblock.listblock(frame, name, description)
         sec.create(data)
         return sec

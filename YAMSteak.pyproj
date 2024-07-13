@@ -32,7 +32,7 @@
     <Compile Include="YAMLTYPES\entrybox.py" />
     <Compile Include="YAMLTYPES\multi_dropdown.py" />
     <Compile Include="YAMLTYPES\multi_entrybox.py" />
-    <Compile Include="YAMLTYPES\subsection.py" />
+    <Compile Include="YAMLTYPES\listblock.py" />
     <Compile Include="YAMLTYPES\tabs.py" />
     <Compile Include="YAMLTYPES\type_container.py" />
     <Compile Include="YAMLTYPES\__init__.py" />
