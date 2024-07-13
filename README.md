@@ -27,7 +27,7 @@ GUI:
       - transparent
       - none
   buttons:
-    type: subsection
+    type: listblock
     block:
       height:
         type: entry
