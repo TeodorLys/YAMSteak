@@ -3,6 +3,7 @@ Handles the creation of each GUI type (YAMLTYPES)
 """
 from YAMLTYPES import dropdown, multi_dropdown, multi_entrybox, tabs,entrybox, checkbox
 from CTkToolTip import CTkToolTip
+from configuration.safe_assignment import safe_assignment
 
 class gui_objects:
     """
@@ -77,6 +78,7 @@ class create_gui:
     def __init__(self):
         self.custom_begin = False
         self.tab = None
+        self.assign = safe_assignment()
     
     def handle_dict_objects(self, tab, data, custom_begin: bool = False):
         """
@@ -95,24 +97,33 @@ class create_gui:
             self.tab = tabs.tabs(tab)
             frame = self.tab.add("default", True)
         for i in data.items():
+            name = i[0]
             if not isinstance(i[1], dict):
+                print(f"No data was found inside {name}")
                 continue
             if "type" not in i[1]:
+                print(f"No type was found in {name}")
                 continue
             if "description" in i[1]:
                 last_description = i[1]["description"]
-            if i[1]["type"] == "entry":
-                gui_obj.entry.append(self.__handle_entry_objects(frame, i[0], last_description))
-            if i[1]["type"] == "multi_entry":
-                gui_obj.multientry.append(self.__handle_multi_entry_objects(frame, i[0], last_description))
-            if i[1]["type"] == "checkbox":
-                gui_obj.checkbox.append(self.__handle_check_box(frame, i[0], last_description))
-            if i[1]["type"] == "dropdown":
-                gui_obj.dropdown.append(self.__handle_dropdown(frame, i[0], i[1]["options"], last_description))
-            if i[1]["type"] == "multi_dropdown":
-                gui_obj.multidropdown.append(self.__handle_multi_dropdown(frame, i[0], i[1]["options"], last_description))
-            if i[1]["type"] == "listblock":
-                gui_obj.listblock.append(self.__handle_listblock(tab, i[0], i[1]["block"], last_description))
+            _type = i[1]["type"]
+            if _type == "entry":
+                gui_obj.entry.append(self.__handle_entry_objects(frame, name, last_description))
+            elif _type == "multi_entry":
+                gui_obj.multientry.append(self.__handle_multi_entry_objects(frame, name, last_description))
+            elif _type == "checkbox":
+                gui_obj.checkbox.append(self.__handle_check_box(frame, name, last_description))
+            elif _type == "dropdown":
+                options = self.assign.safe_assign_exit(i[1], "options", list, f"options was not found in {name}")
+                gui_obj.dropdown.append(self.__handle_dropdown(frame, name, options, last_description))
+            elif _type == "multi_dropdown":
+                options = self.assign.safe_assign_exit(i[1], "options", list, f"options was not found in {name}")
+                gui_obj.multidropdown.append(self.__handle_multi_dropdown(frame, name, options, last_description))
+            elif _type == "listblock":
+                block = self.assign.safe_assign_exit(i[1], "block", dict, f"block was not found in {name}")
+                gui_obj.listblock.append(self.__handle_listblock(tab, name, block, last_description))
+            else:
+                print(f"Type was not recognized {_type} in {name}")
         return gui_obj
 
     def __handle_entry_objects(self, tab, name, description):
